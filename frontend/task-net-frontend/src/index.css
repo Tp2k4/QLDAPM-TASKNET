@@ -1,0 +1,304 @@
+/* Minimal, consolidated styles for TaskNet UI */
+
+/*/@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');*/
+
+:root{
+  /* Material-inspired palette */
+  --md-bg:#f5f7fb;
+  --md-surface:#ffffff;
+  --md-primary:#1976d2;       /* blue 600 */
+  --md-primary-700:#0d47a1;   /* blue 900 */
+  --md-secondary:#009688;     /* teal 600 */
+  --md-success:#2e7d32;       /* green 700 */
+  --md-error:#c62828;         /* red 700 */
+  --text: #0f172a;
+  --muted: #6b7280;
+
+  /* Spacing scale */
+  --space-xs:6px;
+  --space-sm:10px;
+  --space-md:16px;
+  --space-lg:24px;
+  --radius:10px;
+
+  /* Elevation */
+  --shadow-sm: 0 6px 18px rgba(15,23,42,0.06);
+  --shadow-md: 0 14px 40px rgba(15,23,42,0.09);
+
+  --border-subtle: rgba(15,23,42,0.06);
+  --border-strong: rgba(15,23,42,0.14);
+
+  /* Status colors & badges */
+  --status-pending: #ffb020;        /* amber */
+  --status-pending-text: #5a3700;
+  --status-inprogress: #0288d1;     /* light blue */
+  --status-inprogress-text: #053f57;
+  --status-completed: #2e7d32;      /* green */
+  --status-completed-text: #0b3b17;
+}
+
+/* Reset & base */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--md-bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: var(--space-lg) 0;
+  line-height:1.4;
+}
+
+/* Container */
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Card */
+.card{
+  background:var(--md-surface);
+  border-radius:var(--radius);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Card spacing helpers */
+.card-lg{ padding: var(--space-lg) }
+.card-sm{ padding: var(--space-sm) }
+
+/* Header */
+header{ padding: 6px 0; }
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:8px;
+  background:var(--md-primary);
+  color:#fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor:pointer;
+  font-weight:600;
+  font-size:0.95rem;
+  transition: box-shadow .12s ease, transform .08s ease;
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--md-primary);
+  border:1px solid var(--border-strong);
+}
+.btn.small{ padding:6px 10px; font-size:0.92rem; border-radius:8px }
+
+/* Only .btn and .task-item have hover */
+.btn:hover{
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+.btn:active{ transform: translateY(0); opacity: .96 }
+
+/* Inputs (no hover transitions) */
+input[type="text"], input[type="date"], select, textarea{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--border-subtle);
+  background:#fff;
+  outline:none;
+  font-size:0.95rem;
+}
+input:focus, select:focus, textarea:focus{
+  box-shadow: 0 10px 30px rgba(25,118,210,0.08);
+  border-color: var(--md-primary-700);
+}
+
+/* Compact controls */
+.small-input, .select-sm{
+  width:150px;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid var(--border-subtle);
+}
+
+/* Task list & item */
+.task-list{ display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+
+.task-item{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:14px;
+  border-radius:8px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border:1px solid var(--border-strong);
+  transition: transform .12s ease, box-shadow .18s ease, border-color .12s ease;
+}
+.task-item + .task-item{ margin-top:8px }
+.task-item:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(15,23,42,0.22);
+}
+
+/* Layout helpers for filters & forms */
+.filters-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+/* Ensure date controls and action buttons are aligned in one row */
+.date-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* Buttons group spacing */
+.btn-group{ display:flex; gap:10px; align-items:center }
+
+/* Pagination */
+.pagination{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:nowrap;
+  margin-top:12px;
+}
+.pagination .btn{ padding:6px 10px }
+
+/* Forms */
+.form, .task-form, form{ width:100%; }
+.form-group, .form-row{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:14px;
+}
+.form-row.inline{ flex-direction:row; gap:10px; align-items:center }
+.form-title{ margin:0 0 8px 0; font-weight:600; font-size:1rem; color:var(--text) }
+.form-actions{ display:flex; gap:10px; margin-top:10px; align-items:center }
+
+/* Typography */
+.text-muted{ color:var(--muted) }
+.text-sm{ font-size:0.9rem }
+
+/* Accessibility */
+:focus-visible{ outline: 3px solid rgba(25,118,210,0.14); outline-offset:2px }
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  .container{ padding:0 16px }
+  .date-actions, .filters-row{ gap:8px }
+}
+@media (max-width: 640px){
+  .task-item{ padding:12px; gap:10px }
+  .small-input, .select-sm{ width:120px }
+  .pagination{ justify-content:center }
+}
+
+/* Compact status badge used in task row or lists */
+.status-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.85rem;
+  line-height:1;
+  border:1px solid rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.92);
+}
+
+/* small colored dot */
+.status-badge .dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  flex:0 0 auto;
+}
+
+/* Pending */
+.status-badge.pending{
+  color: var(--status-pending-text);
+  background: rgba(255,176,32,0.10);
+  border-color: rgba(255,176,32,0.16);
+}
+.status-badge.pending .dot{ background: var(--status-pending); }
+
+/* In-progress */
+.status-badge.in-progress{
+  color: var(--status-inprogress-text);
+  background: rgba(2,136,209,0.10);
+  border-color: rgba(2,136,209,0.14);
+}
+.status-badge.in-progress .dot{ background: var(--status-inprogress); }
+
+/* Completed */
+.status-badge.completed{
+  color: var(--status-completed-text);
+  background: rgba(46,125,50,0.10);
+  border-color: rgba(46,125,50,0.14);
+}
+.status-badge.completed .dot{ background: var(--status-completed); }
+
+/* Accent the task item with a thin colored bar on the left */
+.task-item[data-status="pending"]{
+  border-left: 4px solid var(--status-pending);
+  padding-left: 12px;
+}
+.task-item[data-status="in-progress"]{
+  border-left: 4px solid var(--status-inprogress);
+  padding-left: 12px;
+}
+.task-item[data-status="completed"]{
+  border-left: 4px solid var(--status-completed);
+  padding-left: 12px;
+}
+
+/* Ensure badge and left-bar coexist responsively */
+@media (max-width:640px){
+  .status-badge{ font-size:.82rem; padding:5px 8px; gap:6px; }
+  .task-item[data-status] { padding-left:10px; }
+}
+
+/* Modal styles for edit popup */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 760px;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 30px 80px rgba(2,6,23,0.35);
+  border: 1px solid rgba(15,23,42,0.12);
+  background: var(--md-surface);
+}
+
+/* make TaskForm inputs full-width inside modal */
+.modal-card .task-form input,
+.modal-card .task-form textarea,
+.modal-card .task-form select {
+  width: 100%;
+}
