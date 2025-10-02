@@ -3,8 +3,8 @@ import { Task } from "../types";
 
 type FilterType = "all" | Task["status"];
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000/api";
-
+// const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
+const API_BASE = "/api";
 export default function useTasks(perPage = 5) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [filter, setFilter] = useState<FilterType>("all");
