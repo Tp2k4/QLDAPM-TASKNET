@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold">TaskNet</h1>
           <p className="text-sm text-muted">
-            Quản lý nhiệm vụ — nhanh, gọn, trực quan
+            This Is From Web A
           </p>
         </div>
       </div>
