@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold">TaskNet</h1>
           <p className="text-sm text-muted">
-            This Is From Web A
+            This Is From Web B
           </p>
         </div>
       </div>
